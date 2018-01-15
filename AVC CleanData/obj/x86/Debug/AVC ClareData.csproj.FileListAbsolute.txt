@@ -1,0 +1,9 @@
+D:\AVC ClareData\AVC ClareData\AVC ClareData\bin\Debug\AVC ClareData.exe
+D:\AVC ClareData\AVC ClareData\AVC ClareData\bin\Debug\AVC ClareData.pdb
+D:\AVC ClareData\AVC ClareData\AVC ClareData\obj\x86\Debug\AVC_ClareData.Properties.Resources.resources
+D:\AVC ClareData\AVC ClareData\AVC ClareData\obj\x86\Debug\AVC ClareData.csproj.GenerateResource.Cache
+D:\AVC ClareData\AVC ClareData\AVC ClareData\obj\x86\Debug\AVC ClareData.exe
+D:\AVC ClareData\AVC ClareData\AVC ClareData\obj\x86\Debug\AVC ClareData.pdb
+D:\AVC ClareData\AVC ClareData\AVC ClareData\bin\Debug\AVC ClareData.exe.config
+D:\AVC ClareData\AVC ClareData\AVC ClareData\obj\x86\Debug\AVC ClareData.csprojResolveAssemblyReference.cache
+D:\AVC ClareData\AVC ClareData\AVC ClareData\obj\x86\Debug\AVC_ClareData.DataClear.resources

@@ -1,0 +1,22 @@
+D:\AVC CleanData\AVC CleanData\bin\x64\Debug\AVC ClareData.exe.config
+D:\AVC CleanData\AVC CleanData\bin\x64\Debug\AVC ClareData.exe
+D:\AVC CleanData\AVC CleanData\bin\x64\Debug\AVC ClareData.pdb
+D:\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC_ClareData.DataClean.resources
+D:\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC_ClareData.Properties.Resources.resources
+D:\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC CleanData.csproj.GenerateResource.Cache
+D:\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC ClareData.exe
+D:\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC ClareData.pdb
+E:\A工作文件\AVC CleanData\AVC CleanData\bin\x64\Debug\AVC ClareData.exe.config
+E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC ClareData.exe
+E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC ClareData.pdb
+E:\A工作文件\AVC CleanData\AVC CleanData\bin\x64\Debug\AVC ClareData.exe
+E:\A工作文件\AVC CleanData\AVC CleanData\bin\x64\Debug\AVC ClareData.pdb
+E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC_ClareData.DataClean.resources
+E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC_ClareData.Properties.Resources.resources
+E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC CleanData.csproj.GenerateResource.Cache
+E:\A工作文件\AVC CleanData\AVC CleanData\bin\x64\Debug\Tamir.SharpSSH.dll
+E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC CleanData.csprojResolveAssemblyReference.cache
+E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC_ClareData.Form1.resources
+E:\A工作文件\AVC CleanData\AVC CleanData\bin\x64\Debug\DiffieHellman.dll
+E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC_ClareData.InsertXian.resources
+E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC_ClareData.InsertXian_sjxh.resources
