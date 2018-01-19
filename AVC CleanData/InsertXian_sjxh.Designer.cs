@@ -38,12 +38,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.richTextBox1);
             this.groupBox1.Controls.Add(this.label_time);
             this.groupBox1.Controls.Add(this.label_times);
             this.groupBox1.Controls.Add(this.label4);
@@ -52,10 +53,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.progressBar1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(11, 7);
+            this.groupBox1.Location = new System.Drawing.Point(5, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(741, 433);
+            this.groupBox1.Size = new System.Drawing.Size(754, 438);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "详细信息：";
@@ -130,13 +130,13 @@
             this.progressBar1.Size = new System.Drawing.Size(706, 18);
             this.progressBar1.TabIndex = 1;
             // 
-            // textBox1
+            // richTextBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(17, 31);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(706, 249);
-            this.textBox1.TabIndex = 0;
+            this.richTextBox1.Location = new System.Drawing.Point(7, 14);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(741, 288);
+            this.richTextBox1.TabIndex = 15;
+            this.richTextBox1.Text = "";
             // 
             // InsertXian_sjxh
             // 
@@ -148,6 +148,7 @@
             this.MaximizeBox = false;
             this.Name = "InsertXian_sjxh";
             this.Text = "商家型号对照表数据抽取";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InsertXian_sjxh_FormClosed);
             this.Load += new System.EventHandler(this.InsertXian_sjxh_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -160,12 +161,12 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox_setTime;
         private System.Windows.Forms.Label label_times;
         private System.Windows.Forms.Label label_time;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

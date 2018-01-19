@@ -343,131 +343,139 @@ namespace AVC_ClareData
             Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
             excelApp.DisplayAlerts = false;
             excelApp.Visible = false;
-            Microsoft.Office.Interop.Excel.Workbook book = excelApp.Workbooks.Open(filePath);
-            foreach (Microsoft.Office.Interop.Excel.Worksheet sheet in book.Worksheets)
-                workSheet.Add(sheet.Name);
-
-            strDatetime = DateTime.Now.ToString();
-
-            DataSet Buff = new DataSet();          
-
-            using (OleDbConnection oleDbCon = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + filePath + "';Extended Properties='Excel 12.0;HDR=Yes;IMEX=1'"))
+            try
             {
-                try
+                Microsoft.Office.Interop.Excel.Workbook book = excelApp.Workbooks.Open(filePath);
+                foreach (Microsoft.Office.Interop.Excel.Worksheet sheet in book.Worksheets)
+                    workSheet.Add(sheet.Name);
+
+                strDatetime = DateTime.Now.ToString();
+
+                DataSet Buff = new DataSet();
+
+                using (OleDbConnection oleDbCon = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + filePath + "';Extended Properties='Excel 12.0;HDR=Yes;IMEX=1'"))
                 {
-                    oleDbCon.Open();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                //遍历所有表
-                foreach (string sheetName in workSheet)
-                {
-                    Debug.WriteLine(string.Format("正在读取数据源工作表--{0}--处理函数：{1}", sheetName, DateTime.Now.ToString()));
-                    //读取EXCEL数据源
-                    //string cmd = "SELECT 商品id,商品名称,店铺名称,品牌名称,品牌id,品类id,品类名称,吊牌价,运动鞋分类,款号,鞋帮高度,闭合方式,性别  FROM [" + sheetName + "$] order by 品牌名称,款号,吊牌价";  
-                    ////女装
-                    ////select 平台,商品名称,urlID,skuId,品牌ID,品牌,品类id,品类1,品类2,店铺,店铺ID,标牌价,促销信息,累积评论数,商品评分,月成交记录
-                    // string cmd = "SELECT 平台,商品名称,urlID,skuId,品牌ID,品牌,品类id,品类1,品类2,店铺,店铺ID,标牌价,促销信息,累积评论数,商品评分,月成交记录,衣长,袖长,衣门襟,图案,风格,货号,里料材质,厚薄,领子,促销价 FROM [" + sheetName + "$] ";
-                    string cmd = "SELECT * FROM [" + sheetName + "$] ";
-                    OleDbDataAdapter adp = new OleDbDataAdapter(cmd, oleDbCon);
-                    adp.SelectCommand.CommandTimeout = 3600;
                     try
                     {
-                        DataTable data = new DataTable();
-                        adp.Fill(data);
-                        if (data != null && data.Rows.Count > 0)
-                        {
-                            //string asd = string.Empty;
-                            //MD5 md5 = new MD5CryptoServiceProvider();
-                            //byte[] check = new byte[1024];
-                            //MemoryStream memory = new MemoryStream();
-                            //BinaryFormatter bf = new BinaryFormatter();
-                            //bf.Serialize(memory, data);
-                            //check = memory.GetBuffer();
-                            //memory.Close();
-                            //byte[] outo = md5.ComputeHash(check);
-                            //asd = BitConverter.ToString(outo).Replace("-", "");
-                             
-                            //Debug.WriteLine(asd);
-
-                           
-
-                            Debug.WriteLine("star:" + DateTime.Now.ToString());
-
-                            data = data.AsEnumerable().Select(
-                                p =>
-                                {
-                                    foreach (DataColumn dc in data.Columns)
-                                    {
-                                        if (p[dc].ToString() == "")
-                                            p[dc] = DBNull.Value;
-                                    }
-                                    return p;
-                                }
-                                ).CopyToDataTable();
-                            Debug.WriteLine("end:" + DateTime.Now.ToString());
-                           // openExcelSheets(data, filePath);
-                            //SelectYJBLowerPrice(data, filePath);
-                            //////执行第一版方法
-                            ////TheFirstMethod(data, sheetName);
-                            ////执行第二版方法
-                            //// TheSecondMethod(data, sheetName);
-                            //// TheThirdMethod(data, sheetName);
-                            ////TheFRMethod(data, sheetName);
-                            int dpBrand = 0;
-                            for (int ax = 0; ax < data.Columns.Count; ax++)
-                            {
-                                if (data.Columns[ax].ColumnName == "单品品牌")
-                                {
-                                    dpBrand = 1;
-                                    break;
-                                }
-                            }
-                            if (dpBrand == 1)
-                            {
-                                Online_TC(data, sheetName);
-                            }
-                            else
-                            {
-                                //整理套餐机型
-                                TC(data, sheetName);
-                            }
-                            ////女装
-                            ////NewMethodNV(data, sheetName);
-                            //// TddC(data, sheetName);
-                        }
+                        oleDbCon.Open();
                     }
                     catch (Exception ex)
                     {
                         throw ex;
                     }
-                }
-            }
-            //关闭excel进程           
-            try
-            {
-                book.Close();
-                excelApp.Quit();
-                if (excelApp != null)
-                {
-                    //获取Excel App的句柄
-                    hwnd = new IntPtr(excelApp.Hwnd);
-                    //通过Windows API获取Excel进程ID
-                    GetWindowThreadProcessId(hwnd, out pid);
-                    if (pid > 0)
+                    //遍历所有表
+                    foreach (string sheetName in workSheet)
                     {
-                        Process process = Process.GetProcessById(pid);
-                        process.Kill();
+                        Debug.WriteLine(string.Format("正在读取数据源工作表--{0}--处理函数：{1}", sheetName, DateTime.Now.ToString()));
+                        //读取EXCEL数据源
+                        //string cmd = "SELECT 商品id,商品名称,店铺名称,品牌名称,品牌id,品类id,品类名称,吊牌价,运动鞋分类,款号,鞋帮高度,闭合方式,性别  FROM [" + sheetName + "$] order by 品牌名称,款号,吊牌价";  
+                        ////女装
+                        ////select 平台,商品名称,urlID,skuId,品牌ID,品牌,品类id,品类1,品类2,店铺,店铺ID,标牌价,促销信息,累积评论数,商品评分,月成交记录
+                        // string cmd = "SELECT 平台,商品名称,urlID,skuId,品牌ID,品牌,品类id,品类1,品类2,店铺,店铺ID,标牌价,促销信息,累积评论数,商品评分,月成交记录,衣长,袖长,衣门襟,图案,风格,货号,里料材质,厚薄,领子,促销价 FROM [" + sheetName + "$] ";
+                        string cmd = "SELECT * FROM [" + sheetName + "$] ";
+                        OleDbDataAdapter adp = new OleDbDataAdapter(cmd, oleDbCon);
+                        adp.SelectCommand.CommandTimeout = 3600;
+                        try
+                        {
+                            DataTable data = new DataTable();
+                            adp.Fill(data);
+                            if (data != null && data.Rows.Count > 0)
+                            {
+                                //string asd = string.Empty;
+                                //MD5 md5 = new MD5CryptoServiceProvider();
+                                //byte[] check = new byte[1024];
+                                //MemoryStream memory = new MemoryStream();
+                                //BinaryFormatter bf = new BinaryFormatter();
+                                //bf.Serialize(memory, data);
+                                //check = memory.GetBuffer();
+                                //memory.Close();
+                                //byte[] outo = md5.ComputeHash(check);
+                                //asd = BitConverter.ToString(outo).Replace("-", "");
+
+                                //Debug.WriteLine(asd);
+
+
+
+                                Debug.WriteLine("star:" + DateTime.Now.ToString());
+
+                                data = data.AsEnumerable().Select(
+                                    p =>
+                                    {
+                                        foreach (DataColumn dc in data.Columns)
+                                        {
+                                            if (p[dc].ToString() == "")
+                                                p[dc] = DBNull.Value;
+                                        }
+                                        return p;
+                                    }
+                                    ).CopyToDataTable();
+                                Debug.WriteLine("end:" + DateTime.Now.ToString());
+                                // openExcelSheets(data, filePath);
+                                //SelectYJBLowerPrice(data, filePath);
+                                //////执行第一版方法
+                                ////TheFirstMethod(data, sheetName);
+                                ////执行第二版方法
+                                //// TheSecondMethod(data, sheetName);
+                                //// TheThirdMethod(data, sheetName);
+                                ////TheFRMethod(data, sheetName);
+                                int dpBrand = 0;
+                                for (int ax = 0; ax < data.Columns.Count; ax++)
+                                {
+                                    if (data.Columns[ax].ColumnName == "单品品牌")
+                                    {
+                                        dpBrand = 1;
+                                        break;
+                                    }
+                                }
+                                if (dpBrand == 1)
+                                {
+                                    Online_TC(data, sheetName);
+                                }
+                                else
+                                {
+                                    //整理套餐机型
+                                    TC(data, sheetName);
+                                }
+                                ////女装
+                                ////NewMethodNV(data, sheetName);
+                                //// TddC(data, sheetName);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
                     }
+                }
+                //关闭excel进程           
+                try
+                {
+                    book.Close();
+                    excelApp.Quit();
+                    if (excelApp != null)
+                    {
+                        //获取Excel App的句柄
+                        hwnd = new IntPtr(excelApp.Hwnd);
+                        //通过Windows API获取Excel进程ID
+                        GetWindowThreadProcessId(hwnd, out pid);
+                        if (pid > 0)
+                        {
+                            Process process = Process.GetProcessById(pid);
+                            process.Kill();
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show("error:" + e.Message ); return;
             }
         }
+
 
         private void ProgressBarDisplay(DataTable data, int i)
         {

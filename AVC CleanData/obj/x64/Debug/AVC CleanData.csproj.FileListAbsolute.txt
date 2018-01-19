@@ -20,3 +20,4 @@ E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC_ClareData.Form1.r
 E:\A工作文件\AVC CleanData\AVC CleanData\bin\x64\Debug\DiffieHellman.dll
 E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC_ClareData.InsertXian.resources
 E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC_ClareData.InsertXian_sjxh.resources
+E:\A工作文件\AVC CleanData\AVC CleanData\obj\x64\Debug\AVC_ClareData.urlData.resources

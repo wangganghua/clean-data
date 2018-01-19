@@ -15,10 +15,11 @@ namespace AVC_ClareData
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DataClean());
+            //Application.Run(new DataClean());
             //Application.Run(new Form1());
             //Application.Run(new InsertXian());
             //Application.Run(new InsertXian_sjxh());
+            Application.Run(new urlData());
         }
     }
 }
